@@ -1,6 +1,7 @@
 WHAT := allEyesOnMe
 
 PWD ?= $(shell pwd)
+LS ?= $(shell ls)
 
 VERSION   ?= $(shell git describe --tags)
 REVISION  ?= $(shell git rev-parse HEAD)
@@ -70,6 +71,7 @@ release: build-darwin-amd64 build-linux-amd64 build-windows-amd64
 static:
 	go build -o esc esc.go
 	echo ${PWD}
+	echo ${LS}
 	./esc -o pkg/static/static.go -pkg static web/vue.js/dist
 	
 

@@ -32,7 +32,7 @@ jobs:
       - run:
           name: "do tests"
           command: "go test ./pkg/*"
-  run:
+  bıild&run:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -41,6 +41,9 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
+      - run:
+          name: "build"
+          command: "go build -o ./bin/allEyesOnMe ./cmd/main.go"
       - run:
           name: "run AllEyesOnMe"
           command: "./bin/allEyesOnMe"

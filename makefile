@@ -68,7 +68,8 @@ release: build-darwin-amd64 build-linux-amd64 build-windows-amd64
 	cd ${PWD}/bin; tar cfvz allEyesOnMe-${VERSION}-windows-amd64.tar.gz ./allEyesOnMe-${VERSION}-windows-amd64
 
 static:
-	esc -o pkg/static/static.go -pkg static web/vue.js/dist
+	go build -o esc esc.go
+	./esc -o pkg/static/static.go -pkg static web/vue.js/dist
 
 vue-build:
-	cd ${PWD}/web/vue.js; yarn build
+	cd ${PWD}/web/vue.js; yarn watch

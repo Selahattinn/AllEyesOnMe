@@ -1,0 +1,11 @@
+host: 0.0.0.0:8080
+cert_file:
+key_file:
+api:
+  secret: "very_secret_password"
+
+database:
+  address: 127.0.0.1:3306
+  username: root
+  password: password
+  db_name: AllEyesOnMe

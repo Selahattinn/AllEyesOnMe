@@ -17,8 +17,6 @@ jobs:
       - run:
           name: "build"
           command: "go build"
-  run:
-    steps:
       - run:
         name: "run"
         command: ./AllEyesOnMe
@@ -29,4 +27,3 @@ workflows:
   main-workflow:
     jobs:
       - build
-      - run

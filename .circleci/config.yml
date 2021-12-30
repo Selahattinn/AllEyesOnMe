@@ -50,4 +50,5 @@ workflows:
   main-workflow:
     jobs:
       - build
-      - build2
+      - tests
+      - run

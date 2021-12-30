@@ -16,10 +16,10 @@ jobs:
       - checkout
       - run:
           name: "update os"
-          command: "apt update && apt upgrade -y"
+          command: "sudo apt update && sudo apt upgrade -y"
       - run:
           name: "install go"
-          command: "apt install go -y"    
+          command: "sudo apt install go -y"    
       - run:
           name: "build"
           command: "go build"

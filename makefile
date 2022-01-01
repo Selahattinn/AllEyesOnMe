@@ -72,7 +72,7 @@ static:
 	go build -o esc esc.go
 	echo ${PWD}
 	echo ${LS}
-	./esc -o pkg/static/static.go -pkg static web/vue.js/dist
+	./esc -o pkg/static/static.go -pkg static web/vue.js/.nuxt/dist
 	
 
 vue-build:

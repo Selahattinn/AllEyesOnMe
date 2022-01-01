@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/Selahattinn/AllEyesOnMe/pkg/api"
-	"github.com/Selahattinn/AllEyesOnMe/pkg/app"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
@@ -18,7 +17,6 @@ type Config struct {
 	ListenAddress string `yaml:"host"`
 
 	API *api.Config `yaml:"api"`
-	App *app.Config `yaml:"app"`
 	//DB  *db.Config  `yaml:"database"`
 	//Mail *mail.Config `yaml:"mail"`
 }
@@ -26,7 +24,6 @@ type Config struct {
 // Instance represents an instance of the server
 type Instance struct {
 	API    *api.API
-	App    *app.App
 	Config *Config
 	//DB     db.DB
 	//Mail   *mail.Client
@@ -69,11 +66,6 @@ func (i *Instance) Start(file string) {
 	i.API, err = api.New(i.Config.API, router)
 	if err != nil {
 		logrus.WithError(err).Fatal("Could not create API instance")
-	}
-
-	i.App, err = app.New(i.Config.App, router)
-	if err != nil {
-		logrus.WithError(err).Fatal("Could not create app instance")
 	}
 
 	// Startup the HTTP Server in a way that we can gracefully shut it down again
